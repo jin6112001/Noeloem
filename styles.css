@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@font-face {
+    font-family: 'Merry'; 
+    src: url('./Mr.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+
+
+body {
+    background-image: url("./img/Re.png");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Hiệu ứng cho toàn bộ container sao */
+#star-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Không chặn click */
+    overflow: hidden;
+    z-index: 999;
+    line-height: 10%;
+    
+    
+}
+
+/* Hiệu ứng sao băng */
+.comet {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background: radial-gradient(circle, white 0%, pink 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px pink;
+    animation: fly 6s linear infinite;
+    line-height: 50%;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        top: 10%;
+        left: -10%;
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, 100vh) scale(0.5);
+        top: 90%;
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+/* Hiệu ứng sao nhấp nháy */
+.star {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: whitesmoke ;
+    border-radius: 50%;
+    box-shadow: 0 0 5px pink ;
+    animation: sparkle 5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Ngẫu nhiên hóa vị trí sao nhấp nháy */
+.star:nth-child(1) { top: 20%; left: 30%; animation-delay: 0.5s; }
+.star:nth-child(2) { top: 50%; left: 70%; animation-delay: 1s; }
+.star:nth-child(3) { top: 80%; left: 40%; animation-delay: 1.5s; }
+.star:nth-child(4) { top: 10%; left: 80%; animation-delay: 0.8s; }
+.star:nth-child(5) { top: 35%; left: 15%; animation-delay: 1.2s; }
+
+
+
+
+@media (max-width: 768px) {
+    html, body {
+        overflow: hidden;
+        height: 100%;
+    }
+}
+
+.christmas-message {
+    font-size: 65px;
+    font-family: "Merry";
+    color: rgb(255, 162, 162);
+    font-weight: bold;
+    text-align: center;
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    animation: glow 1.5s ease-in-out infinite;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    transition: opacity 1s, visibility 1s;
+    display: block;
+    line-height: 1; 
+  }
+  
+  @keyframes glow {
+    20% {
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    }
+    50% {
+      text-shadow: 0 0 10px #ffffff, 0 0 15px #f7b3b3, 0 0 30px #ffffff;
+    }
+    80% {
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #f7b3b3;
+    }
+  }
+
+  
+
+.container {
+    text-align: center;
+    position: absolute; 
+    bottom: 30px; 
+    width: 100%;  
+    display: flex;
+    justify-content: center; 
+}
+
+
+
+#showButton {
+    background-color: #ffffff00; 
+    font-family:'Times New Roman', Times, serif;
+    color: white; 
+    border: none; 
+    border-radius: 8px;
+    
+    box-shadow: 0 4px #ffffff;
+    transition: all 0.3s ease; 
+}
+#showButton img {
+    width: 100%;  
+    height: 40px;
+    cursor: pointer;
+    
+}
+
+#showButton img:hover{
+    transform: scale(1.1); /* Phóng to khi hover */
+}
+
+
+#showButton:hover {
+    background-color: #a04545; 
+    
+}
+
+#showButton:active {
+    box-shadow: 0 2px #666; 
+    transform: translateY(4px); 
+}
+
+
+@media (max-width: 600px) {
+    #showButton {
+        bottom: 80px; 
+    }
+}
+.hidden {
+    display: none;
+}
+
+#guideInfo.show {
+    opacity: 1; 
+    visibility: visible;  
+    transition: opacity 0.5s ease, visibility 0s 0s;
+}
+
+
+#guideInfo h2, #guideInfo p {
+    margin: 10px 0;  
+}
+
+.close-btn {
+    position: fixed;
+    top: 0; 
+    right: 0;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+    z-index: 1000; 
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+::selection {
+    background: transparent;
+}
+
+h4 {
+    font-size: 26px;
+    line-height: 1px;
+    font-family: 'Amatic SC', cursive !important;
+    font-weight: bold;
+}
+
+.color {
+    color: #9c2f22
+}
+
+
+.card {
+    color: #013243;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 400px;
+    letter-spacing: 1px;
+    background: #e0e1dc;
+    transform-style: preserve-3d;
+    font-family: 'Times New Roman', Times, serif;
+    transform: translate(-50%, -50%) perspective(2000px);
+    box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+    transition: 1s;
+}
+
+.card:hover {
+    transform: translate(-50%, -50%) perspective(2000px) rotate(15deg) scale(1.2);
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5), 0 10px 100px rgba(0, 0, 0, .5);
+}
+
+.card:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #BAC1BA;
+    transform-origin: bottom;
+    transform: skewX(-45deg);
+}
+
+.card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -5px;
+    width: 5px;
+    height: 100%;
+    background: #92A29C;
+    transform-origin: left;
+    transform: skewY(-45deg);
+}
+
+.card .imgBox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-origin: left;
+    transition: .7s;
+}
+
+.card .bark {
+    position: absolute;
+    background: #e0e1dc;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: .7s;
+}
+
+.card .imgBox img {
+    min-width: 250px;
+    max-height: 400px;
+}
+
+.card:hover .imgBox {
+    transform: rotateY(-135deg);
+}
+
+.card:hover .bark {
+    opacity: 1;
+    transition: .6s;
+    box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+}
+
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 0 0 10px;
+    z-index: -1;
+    margin-top: 70px;
+}
+
+.card .details p {
+    font-size: 15px;
+    line-height: 5px;
+    transform: rotate(-10deg);
+    padding: 0 0 0 20px;
+}
+
+.card .details h4 {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: center;
+    color: #555;
+    font-size: 1%;
+    color: #666;
+    
+}
+#snow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px; 
+    color: white;
+    
+    animation: snow-fall linear infinite;
+    opacity: 0;
+    animation: snow-fall 10s linear infinite, fadeIn 1s forwards;
+}
+
+@keyframes snow-fall {
+    0% {
+        transform: translateX(var(--start-x)) translateY(-10px);
+    }
+    100% {
+        transform: translateX(var(--end-x)) translateY(100vh);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.snow-cover.blamed {
+    background-color: #555;
+    color: #ddd;
+}
+
+header.blamed, footer.blamed {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.gift-text {
+    position: absolute;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    top: -40px;  /* Đặt chữ cách cạnh trên của chiếc thiệp */
+    left: 50%;  /* Đặt chữ ở giữa theo chiều ngang */
+    transform: translateX(-50%);  /* Căn giữa chữ */
+    color: pink;  /* Màu chữ */
+    font-size: 1em;  /* Kích thước chữ */
+    font-weight: bold;  /* Làm chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* Tạo bóng chữ cho dễ nhìn */
+    text-align: center;  /* Căn giữa chữ */
+    z-index: 1;  /* Đảm bảo chữ xuất hiện phía trên ảnh */
+}
+.gift-text1 {
+    position: absolute;
+    top: -25px;  /* Đặt chữ cách cạnh trên của chiếc thiệp */
+    left: 50%;  /* Đặt chữ ở giữa theo chiều ngang */
+    transform: translateX(-50%);  /* Căn giữa chữ */
+    color: pink;  /* Màu chữ */
+    font-size: 1.2em;  /* Kích thước chữ */
+    font-weight: bold;  /* Làm chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* Tạo bóng chữ cho dễ nhìn */
+    text-align: center;  /* Căn giữa chữ */
+    z-index: 1;  /* Đảm bảo chữ xuất hiện phía trên ảnh */
+}
+.gift-text2 {
+    position: absolute;
+    top: 52px;  /* Đặt chữ cách cạnh trên của chiếc thiệp */
+    left: 50%;  /* Đặt chữ ở giữa theo chiều ngang */
+    transform: translateX(-50%);  /* Căn giữa chữ */
+    color: pink;  /* Màu chữ */
+    font-size: 1em;  /* Kích thước chữ */
+    font-weight: bold;  /* Làm chữ đậm */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* Tạo bóng chữ cho dễ nhìn */
+    text-align: center;  /* Căn giữa chữ */
+    z-index: 1;  /* Đảm bảo chữ xuất hiện phía trên ảnh */
+    font-family: garamond;
+}
